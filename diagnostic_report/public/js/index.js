@@ -31,6 +31,19 @@ diagnostic_report_app.controller('left_panel', function($scope, $http){
 	$scope.order_flag = false;
 	$scope.report_flag = false;
 	$scope.toggle_order = function(){
+		FHIR.oauth2.ready(onReady, onError);
+		function onError(){
+	            console.log("Loading error", arguments);
+	        };
+  
+        function onReady(smart){
+            // Load up the patient from SMART
+            // Note: we use DI to inject the patient model ($dmPatient) into the view models within the start method
+            console.log('hello');
+            smart.patient.api.fetchAll({type:'DiagnosticOrder' }).done(function(dr){
+            	console.log(dr);
+            })
+        };
 		$scope.order_flag = !$scope.order_flag;
 	}
 	$scope.toggle_report = function() {

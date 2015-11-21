@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var orders = require('./routes/orders');
 var reports = require('./routes/reports');
+var launch = require('./routes/lanuch.js');
 
 var app = express();
 
@@ -24,10 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, '/public')));
 
-app.use('/', routes);
+app.use('/fhir-app/', routes);
 app.use('/users', users);
 app.use('/orders', orders);
 app.use('/reports', reports);
+app.use('/fhir-app/launch.html', launch);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
