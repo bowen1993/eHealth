@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var orders = require('./routes/orders');
 var reports = require('./routes/reports');
 var launch = require('./routes/lanuch.js');
+var tmp = require('./routes/tmp.js');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/users', users);
 app.use('/orders', orders);
 app.use('/reports', reports);
 app.use('/fhir-app/launch.html', launch);
+app.use('/fhir-app/tmp/', tmp);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

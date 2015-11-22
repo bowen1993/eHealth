@@ -92,9 +92,20 @@ div.item{
 
 div.item div.head-bar{
 	background-color: #0080FF;
-	height:25px;
+	height:30px;
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
+}
+
+div.item div.head-bar a, div.report-item div.report-head-bar a{
+	margin-top: 3px;
+	text-decoration: none;
+	color: #FFF;
+	float: right;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-right: 2%;
+	border-radius: 2px;
 }
 
 div.item div.item-info, div.report-item div.item-info{
@@ -102,56 +113,60 @@ div.item div.item-info, div.report-item div.item-info{
 	text-align: center;
 }
 
-div.item span.order-Requested{
+span.order-Requested{
 	background-color: #4C4C4C;
 	font-size: 1.1em;
 }
 
-div.item span.order-Received{
+span.order-Received{
 	background-color: #0080FF;
 	font-size: 1.1em;
 }
 
-div.item span.order-Accepted{
+span.order-Accepted{
 	background-color: #66FFCC;
 	font-size: 1.1em;
 }
 
-div.item span.order-Rejected{
+span.order-Rejected{
 	background-color: #003300;
 	font-size: 1.1em;
 }
 
-div.item span.order-Failed{
+span.order-Failed{
 	background-color: #CCCCCC;
 	color: #191919;
 	font-size: 1.1em;
 }
 
-div.item span.order-In-progress{
+span.order-In-progress{
 	background-color: #0000FF;
 	font-size: 1.1em;
 }
 
 
-div.item span.order-Review{
+span.order-Review{
 	background-color: #FF8000;
 	font-size: 1.1em;
 }
 
-div.item span.order-Completed{
+span.order-Completed{
 	background-color: #00FF00;
 	font-size: 1.1em;
 }
 
-div.item span.order-Cancelled{
+span.order-Cancelled{
 	background-color: #FF2F23;
 	font-size: 1.1em;
 }
 
-div.item span.order-Suspended{
+span.order-Suspended{
 	background-color: #800040;
 	font-size: 1.1em;
+}
+
+span.label-right{
+	float:right;
 }
 
 div.report-item{
@@ -167,7 +182,7 @@ div.report-item{
 
 div.report-item div.report-head-bar{
 	background-color: #65E931;
-	height:25px;
+	height:30px;
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
 }
@@ -204,3 +219,32 @@ div.report-item span.report-Entered-in-error{
 	font-size: 1.1em;
 }
 
+div.detail-info{
+	width:61.4%;
+	margin:10px auto;
+}
+
+div.info-item{
+	padding-top: 10px;
+	padding-left: 19px;
+	padding-bottom: 3%;
+	margin-bottom: 2%;
+	background-color: #CCCCCC;
+	border-radius: 10px;
+	font-size: 1.2em;
+}
+
+div.info-item span.item-name{
+	font-weight: bold;
+}
+
+div.info-item div.item-title{
+	font-size:1.5em;
+	padding-bottom: 1%;
+	padding-left: 2%;
+	margin-bottom: 2%;
+	margin-right: 19px;
+	background-color: #004080;
+	color:#FFF;
+	border-radius: 5px;
+}

@@ -4,11 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Diagnostic Order</title>
 	<script type="text/javascript" src="/static/js/angular.min.js"></script>
+	<script type="text/javascript" src="/static/js/angular-route.min.js"></script>
 	<script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="/static/js/fhir-client.min.js"></script>
 	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/static/js/controllers.js"></script>
 	<link rel="stylesheet" href="/static/css/bootstrap.css">
 	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="sytlesheet" href="/static/css/order.css">
 </head>
 <body>
 	<div id="container-fluid">
@@ -53,45 +56,8 @@
 				</div>
 			</div><!-- div#report -->
 		</div><!-- div#left-panel -->
-		<div id="mid-panel" ng-controller="mid_panel">
-		<div class="report-item" ng-repeat="report in reports">
-				<div class="report-head-bar"></div>
-				<div class="item-info">
-					<div class="row">
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{report.name}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{report.Order}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{report.Time}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							<span class="label report-{{report.Status}}">{{report.Status}}</span>
-						</div>
-					</div>
-				</div>
-			</div><!-- div.report-item -->
-			<div class="item" ng-repeat="order in orders">
-				<div class="head-bar"></div>
-				<div class="item-info">
-					<div class="row">
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{order.name}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{order.Order}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							{{order.Time}}
-						</div>
-						<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-							<span class="label order-{{order.Status}}">{{order.Status}}</span>
-						</div>
-					</div>
-				</div>
-			</div><!-- div.item -->
+		<div ng-view id="mid-panel">
+			
 		</div><!-- div#mid-panel -->
 		</div><!-- div#main -->
 	</div><!-- div#container-fulid -->
