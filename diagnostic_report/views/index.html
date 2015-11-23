@@ -48,16 +48,60 @@
 				</div>
 				<div class="lists" ng-hide="report_flag">
 					<ul>
-						<li ng-click="get_report()">hello</li>
-						<li>hello</li>
-						<li>hello</li>
-						<li>hello</li>
+						<li ng-click="get_report()">Registered</li>
+						<li ng-click="get_report()">Partial</li>
+						<li ng-click="get_report()">Corrected</li>
+						<li ng-click="get_report()">Appended</li>
+						<li ng-click="get_report()">Cancelled</li>
+						<li ng-click="get_report()">Entered in Error</li>
+
 					</ul>
 				</div>
 			</div><!-- div#report -->
 		</div><!-- div#left-panel -->
-		<div ng-view id="mid-panel">
-			
+		<div id="mid-panel">
+			<div class="edit-panel" id="report_edit">
+				<div class="input-item row">
+					<label for="subject" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Subject: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="subject" type="text" placeholder="Subject">
+				</div>
+				<div class="input-item row">
+					<label for="category" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Category: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="category" placeholder="Category">
+				</div>
+				<div class="input-item row">
+					<label for="encounter" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Encounter: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="encounter" placeholder="Encounter">
+				</div>
+				<div class="input-item row">
+					<label for="code" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Code: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="code" placeholder="Code">
+				</div>
+				<div class="input-item row">
+					<label for="performer" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Performer: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="performer" placeholder="Performer">
+				</div>
+				<div class="input-item row">
+					<label for="effective" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Effective: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="effective" placeholder="Effective">
+				</div>
+				<div class="input-item row">
+					<label for="issued" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Issued</label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="issued" placeholder="Issued">
+				</div>
+				<div class="input-item row">
+					<label for="specimen" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Specimen: </label>
+					<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="specimen" placeholder="Specimen">
+				</div>
+				<div class="input-item row">
+					<label for="result" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Results</label>
+					<textarea class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="result" placeholder="result"></textarea>
+				</div>
+				<div class="input-item row">
+					<label for="conclusion" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Conclusion</label>
+					<textarea class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="conclusion" id="conclusion" cols="20" rows="2" placeholder="Conclusion"></textarea>
+				</div>
+			</div>
 		</div><!-- div#mid-panel -->
 		</div><!-- div#main -->
 	</div><!-- div#container-fulid -->

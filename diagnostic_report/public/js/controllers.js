@@ -50,29 +50,40 @@ DRController.controller('left_panel', ['$scope', '$http', '$location', function(
 		$scope.report_flag = !$scope.report_flag;
 	}
 	$scope.get_all_orders = function() {
+		$location.path('#/');
 		$http.get('/orders').success( function(data) {
 			set_order_data(data);
 		});
-		$location.path('#/')
+		
 	}
 	$scope.get_na_orders = function() {
+		$location.path('#/');
 		$http.get('/orders').success( function(data) {
 			set_order_data(data)
-		})
+		});
 	}
 	$scope.get_ac_orders = function() {
+		$location.path('#/');
 		$http.get('/orders').success( function(data) {
 			set_order_data(data);
-		})
+		});
 	}
 	$scope.get_rj_orders = function(){
+		$location.path('#/');
 		$http.get('/orders').success( function(data) {
 			set_order_data(data);
-		})
+		});
 	}
 	$scope.get_report = function(){
+		$location.path('#/');
 		$http.get('/reports').success( function(data) {
 			set_report_data(data);
 		});
+	}
+}]);
+
+DRController.controller('ReportCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+	$scope.go_index = function() {
+		$location.path('#/');
 	}
 }]);

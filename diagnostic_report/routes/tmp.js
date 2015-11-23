@@ -19,4 +19,8 @@ router.get('/report_detail.html', function(req, res, next) {
 	res.render('report_detail.html', {});
 })
 
+router.get('/report_edit.html', function(req, res, next) {
+	res.render('report_edit.html', {});
+});
+
 module.exports = router;
