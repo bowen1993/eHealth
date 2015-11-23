@@ -87,3 +87,15 @@ DRController.controller('ReportCtrl', ['$scope', '$http', '$location', function(
 		$location.path('#/');
 	}
 }]);
+
+DRController.controller('EditReportCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+	$scope.go_index = function() {
+		$location.path('#/');
+	}
+	$scope.show_msg = function(msg) {
+		$('div.hint-msg').html(msg);
+		$('div.hint-msg').removeClass('hide');
+    	$('div.hint-msg').show(200).delay(1000).hide(200);
+	}
+
+}]);

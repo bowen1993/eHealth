@@ -11,7 +11,7 @@ diagnostic_report_app.config(['$routeProvider', function($routeProvider){
 		templateUrl: '/fhir-app/tmp/report_detail.html',
 		controller: 'ReportCtrl'
 	}).when('/edit_report/:report_id', {
-		templateUrl:'/fhir-app/tmp/order_detail.html',
+		templateUrl:'/fhir-app/tmp/report_edit.html',
 		controller: 'EditReportCtrl'
 	}).otherwise({
 		redirectTo: '/'
