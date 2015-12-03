@@ -31,19 +31,11 @@ DRController.controller('left_panel', ['$scope', '$http', '$location', function(
 	$scope.order_flag = false;
 	$scope.report_flag = false;
 	$scope.toggle_order = function(){
-		FHIR.oauth2.ready(onReady, onError);
-		function onError(){
-	            console.log("Loading error", arguments);
-	        };
-  
-        function onReady(smart){
-            // Load up the patient from SMART
-            // Note: we use DI to inject the patient model ($dmPatient) into the view models within the start method
-            console.log('hello');
-            smart.patient.api.fetchAll({type:'DiagnosticOrder' }).done(function(dr){
-            	console.log(dr);
-            })
-        };
+		FHIR.oauth2.ready(function(smart){
+			smart.patient.api.fetchAll({type: "MedicationOrder"}).done(function(data){
+				console.log(data);
+			});
+		});
 		$scope.order_flag = !$scope.order_flag;
 	}
 	$scope.toggle_report = function() {
@@ -86,11 +78,25 @@ DRController.controller('ReportCtrl', ['$scope', '$http', '$location', function(
 	$scope.go_index = function() {
 		$location.path('#/');
 	}
+	$scope.show_obs_detail = function() {
+		console.log('clicked');
+	}
+	$http.get('/users').success( function(data) {
+		console.log(data);
+		$scope.report_data = data;
+	});
+
 }]);
 
 DRController.controller('EditReportCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 	$scope.go_index = function() {
 		$location.path('#/');
+	}
+	$scope.new_observation_modal = function(){
+		$('div#add-observation').modal('show');
+	}
+	$scope.close_new_observation = function() {
+		$('div#add-observation').modal('hide');
 	}
 	$scope.show_msg = function(msg) {
 		$('div.hint-msg').html(msg);

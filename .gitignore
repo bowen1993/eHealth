@@ -35,3 +35,6 @@ node_modules
 
 #Mac Folder file
 .DS_Store
+
+#security file
+ids

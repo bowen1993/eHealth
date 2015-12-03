@@ -188,34 +188,34 @@ div.report-item div.report-head-bar{
 	border-top-right-radius: 9px;
 }
 
-div.report-item span.report-Registered{
+span.report-registered{
 	background-color: #333333;
 	font-size: 1.1em;
 }
 
-div.report-item span.report-Final{
+span.report-final{
 	background-color: #80FF00;
 	font-size: 1.1em;
 }
-div.report-item span.report-Partial{
+span.report-partial{
 	background-color: #0000FF;
 	font-size: 1.1em;
 }
-div.report-item span.report-Corrected{
+span.report-corrected{
 	background-color: #0080FF;
 	font-size: 1.1em;
 }
-div.report-item span.report-Appended{
+span.report-appended{
 	background-color: #FF8000;
 	font-size: 1.1em;
 }
 
-div.report-item span.report-Cancelled{
+span.report-cancelled{
 	background-color: #FF0000;
 	font-size: 1.1em;
 }
 
-div.report-item span.report-Entered-in-error{
+span.report-entered-in-error{
 	background-color: #800040;
 	font-size: 1.1em;
 }
@@ -288,8 +288,25 @@ div.input-item input{
 	height: 2.2em;
 }
 
-div.input-item textarea{
+div#add-observation input{
+	width:60%;
+	border-radius: 5px;
+	box-shadow: none;
+	border-top-width: 0;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+	background-color: #EFEFEF;
+	height: 2.2em;
+	margin: 0 auto;
+}
 
-	
+div#add-observation{
+	margin-top: 10%;
+}
+
+div.input-item textarea{
 	background-color: #FFF;
 }

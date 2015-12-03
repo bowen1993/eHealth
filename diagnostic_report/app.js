@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -11,6 +12,10 @@ var orders = require('./routes/orders');
 var reports = require('./routes/reports');
 var launch = require('./routes/lanuch.js');
 var tmp = require('./routes/tmp.js');
+var req_auth = require('./routes/req_auth.js');
+var auth = require('./controllers/auth.js');
+var recv_redirect = require('./routes/recv_redirect.js');
+var req_auth = require('./routes/req_auth.js');
 
 var app = express();
 
@@ -24,14 +29,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret:'dontpanic', access_token:'hello'}));
 app.use('/static', express.static(path.join(__dirname, '/public')));
-
+app.use('/', routes);
 app.use('/fhir-app/', routes);
 app.use('/users', users);
 app.use('/orders', orders);
 app.use('/reports', reports);
 app.use('/fhir-app/launch.html', launch);
 app.use('/fhir-app/tmp/', tmp);
+app.use('/recv_redirect', recv_redirect);
+app.use('/req_genomics_auth/', req_auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
