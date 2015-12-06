@@ -31,11 +31,9 @@ DRController.controller('left_panel', ['$scope', '$http', '$location', function(
 	$scope.order_flag = false;
 	$scope.report_flag = false;
 	$scope.toggle_order = function(){
-		FHIR.oauth2.ready(function(smart){
-			smart.patient.api.fetchAll({type: "MedicationOrder"}).done(function(data){
-				console.log(data);
-			});
-		});
+		$http.get('/users').success(function(data){
+			console.log(data);
+		})
 		$scope.order_flag = !$scope.order_flag;
 	}
 	$scope.toggle_report = function() {
@@ -46,7 +44,7 @@ DRController.controller('left_panel', ['$scope', '$http', '$location', function(
 		$http.get('/orders').success( function(data) {
 			set_order_data(data);
 		});
-		
+
 	}
 	$scope.get_na_orders = function() {
 		$location.path('#/');

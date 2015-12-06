@@ -13,7 +13,7 @@ function call_api(headers, methods, data_type, data){
 	})
 }
 */
-
+//function for test purpose
 function call_api(data_type){
 	if ( data_type == '/Observation' ){
 		var json_res = {

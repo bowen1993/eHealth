@@ -16,6 +16,7 @@ var req_auth = require('./routes/req_auth.js');
 var auth = require('./controllers/auth.js');
 var recv_redirect = require('./routes/recv_redirect.js');
 var req_auth = require('./routes/req_auth.js');
+var clinical_req_auth = require('./routes/recv_clinical_auth.js');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/fhir-app/launch.html', launch);
 app.use('/fhir-app/tmp/', tmp);
 app.use('/recv_redirect', recv_redirect);
 app.use('/req_genomics_auth/', req_auth);
+app.use('/req_clincial_auth/', clinical_req_auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

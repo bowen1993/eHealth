@@ -2,18 +2,22 @@ var express = require('express');
 var router = express.Router();
 var config = require('../controllers/configs.js');
 var request = require('request');
+var requestify = require('requestify');
+var mkFhir = require('fhir.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log(req.session);
 	if(!req.session || !req.session.access_token ){
 		res.redirect('/req_genomics_auth/');
 	}else if( !req.session || !req.session.clinical_access_token ){
-		console.log('test clinical');
-		get_clinical_token(req, res);
+		var token = new Buffer(config.clinical_client_id+':'+config.clinical_client_secret).toString('base64');
+		req.session.clinical_basic = token;
+		var code = req.query.code
+		res.redirect('/req_clincial_auth/?code=' + code);
+		console.log(req.session.clinical_access_token);
 	}
-	console.log(req.session.clinical_access_token);
-  	res.render('index.html', {clinical_token:req.session.clinical_access_token});
+	console.log('h');
+  res.render('index.html', {clinical_token:req.session.clinical_access_token});
 });
 
 function get_clinical_token(req, res){
@@ -26,21 +30,22 @@ function get_clinical_token(req, res){
 		code:code,
 		grant_type: 'authorization_code',
 		redirect_uri: redirect_uri,
-        client_id: client_id
 	}
+	console.log(req.session.clinical_basic);
 	var opt = {
 		method:'POST',
 		url: token_uri,
 		headers: {
 			"Content-Type": 'application/x-www-form-urlencoded',
-			"Content-Length" : datas.length
+			"Content-Length" : datas.length,
+			'Authorization': 'Basic ' + req.session.clinical_basic
 		},
 		form:datas
 	};
 	request(opt, function(error, response, body){
 		if (!error && response.statusCode < 500){
-			console.log(body)
-			req.session.clinical_access_token = JSON.parse(body).access_token;
+			console.log(body);
+			return JSON.parse(body).access_token;
 		}else{
 			console.log(error);
 			res.redirect('/fhir-app/launch.html?iss=' + encodeURIComponent(req.session.iss) + '&launch='+req.session.launch);
