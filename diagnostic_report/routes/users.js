@@ -9,9 +9,7 @@ var clinical_api = require('../controllers/clinical_api.js');
 router.get('/', function(req, res, next) {
 	console.log(req.session.clinical_access_token);
 	console.log('calling');
-	var result = clinical_api.read('Patient', 724111, req.session.clinical_access_token);
-	console.log(result);
-	res.json(result);
+	genomic_api_call.search(req.session.access_token ,'Observation' ,res);
 });
 
 module.exports = router;

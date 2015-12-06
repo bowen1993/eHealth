@@ -1,19 +1,43 @@
 var requestify = require('requestify');
 var configs = require('./configs.js')
 
-/*
-function call_api(headers, methods, data_type, data){
-	requestify.request(configs.api_url+data_type, {
-		method: methods,
-		body: data,
-		headers: headers,
-		dataType: 'json'
-	}).then(function(response){
-		return response
-	})
+
+var doGet = function(url, access_token, res){
+	console.log('geting');
+  requestify.get(url, {
+    headers :{'Accept': 'application/json',
+              'Authorization': 'Bearer ' + access_token}
+  }).then(function(response){
+		console.log(response);
+    res.json(response.getBody());
+  });
 }
-*/
+
+var doPost = function(url, data, access_token, res){
+  requestify.post(url, data, {
+    headers:{
+      'Accept' : 'application/json',
+      'Authorization': 'Bearer ' + access_token
+    }
+  }).then(function(response){
+    res.json(response.getBody());
+  });
+}
+
+var doPut = function(url, data, access_token, res){
+  requestify.put(url, data,{
+    headers:{
+      'Accept' : 'application/json',
+      'Authorization': 'Bearer ' + access_token
+    }
+  }).then(function(response){
+    res.json(response.getBody());
+  });
+}
+
+
 //function for test purpose
+/*
 function call_api(data_type){
 	if ( data_type == '/Observation' ){
 		var json_res = {
@@ -570,35 +594,23 @@ function call_api(data_type){
 		return '';
 	}
 }
+*/
 
-function get_header(access_token){
-	return {'Authorization': 'Bearer ' + access_token};
+var create = function(access_token ,data_type, data, res){
+	var url = configs.api_url + '/' + data_type;
+	doPost(url, data, access_token, res);
 }
 
-var create = function(access_token ,data_type, data){
-	var header = get_header(access_token);
-	var resp = call_api(header, 'POST', data_type, data);
-	return resp
+var update = function(access_token, data_type, data, res){
+	var url = configs.api_url + '/' +data_type;
+	doPut(url, data, access_token, res);
 }
 
-var update = function(access_token, data_type, data){
-	var header = get_header(access_token);
-	var resp = call_api(header, 'PUT', data_type, data);
-	return resp;
-}
-
-var search = function(access_token, data_type, query){
-	var header = get_header(access_token);
-	/*
-	console.log(query);
-	requestify.get(configs.api_url+data_type, {
-		headers:header
-	}).then(function(response){
-		console.log(response);
-		return response;
-	});
-	*/
-	return call_api(data_type);
+var search = function(access_token, data_type, res){
+	console.log('in');
+	var url = configs.api_url + '/' + data_type;
+	console.log(url);
+	doGet(url, access_token, res);
 }
 
 module.exports = {
@@ -606,4 +618,3 @@ module.exports = {
 	update:update,
 	search:search
 }
-
