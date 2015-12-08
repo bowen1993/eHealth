@@ -8,18 +8,22 @@ var doGet = function(url, access_token, res){
     headers :{'Accept': 'application/json',
               'Authorization': 'Bearer ' + access_token}
   }).then(function(response){
-    res.json(response.getBody());
+    console.log('obj');
+    console.log(response);
+    res.send(response.getBody());
   });
 }
 
 var doPost = function(url, data, access_token, res){
+  console.log('post');
   requestify.post(url, data, {
     headers:{
       'Accept' : 'application/json',
       'Authorization': 'Bearer ' + access_token
     }
   }).then(function(response){
-    res.json(response.getBody());
+    console.log(response);
+    res.send(response.getBody());
   });
 }
 
@@ -30,7 +34,7 @@ var doPut = function(url, data, access_token, res){
       'Authorization': 'Bearer ' + access_token
     }
   }).then(function(response){
-    res.json(response.getBody());
+    res.send(response.getBody());
   });
 }
 
@@ -38,21 +42,30 @@ var search = function(type, querys, access_token, res){
   console.log(2);
   var queryString = queryBuilder.query(querys);
   console.log(queryString);
-  var url = configs.clinical_api_uri + '/' + type + '/_search?' + queryString;
+  var url = configs.clinical_api_uri + '/' + type + '?' + queryString;
   console.log(url);
   var get_response = doGet(url, access_token, res);
   return get_response;
 }
 
+var getAll = function(type, access_token, res){
+  console.log(access_token);
+  var url = configs.clinical_api_uri + '/' + type + '?_format=json';
+  console.log(url);
+  doGet(url, access_token, res);
+}
+
 var create = function(type, data, access_token, res){
   var type = data.resourceType;
   var url = configs.clinical_api_uri + '/' + type;
+  console.log(url);
   return doPost(url, data, access_token, res);
 }
 
 var read = function(type, id, access_token, res){
-  var url = configs.clinical_api_uri + '/' + type + '/' + id
-  return doGet(url, access_token, res);
+  var url = configs.clinical_api_uri + '/' + type + '/' + id + '?_format=json';
+  console.log(url);
+  doGet(url, access_token, res);
 }
 
 var update = function(type, id, data, access_token, res){
@@ -64,5 +77,6 @@ module.exports = {
   search: search,
   create:create,
   read:read,
-  update:update
+  update:update,
+  getAll:getAll
 }

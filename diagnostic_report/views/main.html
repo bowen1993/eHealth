@@ -4,38 +4,38 @@
 	<div class="item-info">
 		<div class="row">
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{report.name}}
+				{{report.resource.code.display}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{report.Order}}
+				{{report.resource.performer.display}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{report.Time}}
+				{{report.resource.issued}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				<span class="label report-{{report.Status}}">{{report.Status}}</span>
+				<span class="label report-{{report.Status}}">{{report.resource.status}}</span>
 			</div>
 		</div>
 	</div>
 </div><!-- div.report-item -->
 <div class="item" ng-repeat="order in orders">
 	<div class="head-bar">
-		<a href="#/order/:1">Check</a>
-		
+		<a href="#/order/{{order.resource.id}}">Check</a>
+
 	</div>
 	<div class="item-info">
 		<div class="row">
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{order.name}}
+				{{order.resource.id}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{order.Order}}
+				{{order.resource.orderer.reference}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{order.Time}}
+				{{order.resource.meta.lastUpdated}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				<span class="label order-{{order.Status}}">{{order.Status}}</span>
+				<span class="label order-{{order.Status}}">{{order.resource.status}}</span>
 			</div>
 		</div>
 	</div>

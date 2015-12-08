@@ -4,7 +4,7 @@ diagnostic_report_app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
 		templateUrl: '/fhir-app/tmp/main.html',
 		controller: 'MainListCtrl'
-	}).when('/order/:order_id', {
+	}).when('/order/:id', {
 		templateUrl: '/fhir-app/tmp/order_detail.html',
 		controller: 'OrderCtrl'
 	}).when('/report/:report_id', {

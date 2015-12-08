@@ -46,6 +46,7 @@
 			<div class="item-list" id="report">
 				<div class="title">
 					<h3 ng-click="toggle_report()">Report</h3>
+					<a class="btn btn-primary pull-right" href="#/edit_report/:1">Add</a>
 				</div>
 				<div class="lists" ng-hide="report_flag">
 					<ul>
@@ -61,7 +62,7 @@
 			</div><!-- div#report -->
 		</div><!-- div#left-panel -->
 		<div ng-view id="mid-panel">
-			
+
 		</div><!-- div#mid-panel -->
 		</div><!-- div#main -->
 	</div><!-- div#container-fulid -->

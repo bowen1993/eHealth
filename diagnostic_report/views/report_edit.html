@@ -1,48 +1,45 @@
 <div class="edit-panel" id="report_edit">
-	
+
 	<div class="input-item row">
 		<label for="subject" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Category: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="subject" type="text" placeholder="Subject">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="subject" ng-model="category" type="text" placeholder="Category">
 	</div>
 	<div class="input-item row">
 		<label for="category" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Code: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="category" placeholder="Category">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="category" ng-model="code" placeholder="Code">
 	</div>
 	<div class="input-item row">
 		<label for="encounter" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Encounter: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="encounter" placeholder="Encounter">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="encounter" ng-model="encounter" placeholder="Encounter">
 	</div>
 	<div class="input-item row">
 		<label for="code" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Subject: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="code" placeholder="Code">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="code" ng-model="subject" placeholder="Subject">
 	</div>
 	<div class="input-item row">
 		<label for="performer" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Performer: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="performer" placeholder="Performer">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="performer" ng-model="peformer" placeholder="Performer">
 	</div>
 	<div class="input-item row">
 		<label for="effective" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Effective: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="effective" placeholder="Effective">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="effective" ng-model="effective" placeholder="Effective">
 	</div>
 	<div class="input-item row">
 		<label for="issued" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Issued</label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="issued" placeholder="Issued">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="issued" ng-model="issued" placeholder="Issued">
 	</div>
 	<div class="input-item row">
 		<label for="specimen" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Specimen: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="specimen" placeholder="Specimen">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="specimen" ng-model="specimen" placeholder="Specimen">
 	</div>
 	<div class="input-item row">
 		<label for="result" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Results</label>
+		<span class="obs-item" ng-repeat="ob in observation_list">{{ob}}</span>
 		<div class="add-new pull-right" id="add-observation-btn"><button class="btn btn-primary" type="button" ng-click="new_observation_modal()">Add Observation</button></div>
 	</div>
 	<div class="input-item row">
-		<label for="images" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Images</label>
-		<div class="add-new pull-right" id="add-image"><button class="btn btn-primary" type="button">Add Image</button></div>
-	</div>
-	<div class="input-item row">
 		<label for="conclusion" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Conclusion</label>
-		<textarea class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="conclusion" id="conclusion" cols="20" rows="2" placeholder="Conclusion"></textarea>
+		<textarea class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="conclusion" ng-model="conclusion" id="conclusion" cols="20" rows="2" placeholder="Conclusion"></textarea>
 	</div>
 	<div class="input-item row">
 		<label for="cstatus" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Status</label>
@@ -58,7 +55,7 @@
 	<div class="btn-area">
 		<button class="btn btn-info" ng-click="go_index()">Back</button>
 		<button class="btn btn-success pull-right" ng-click="show_msg('Report Confirmed')">Confirm</button>
-		<button class="btn btn-primary pull-right" ng-click="show_msg('Save success')">Save</button>
+		<button class="btn btn-primary pull-right" ng-click="submit(1)">Save</button>
 	</div><!-- div.btn-area -->
 </div><!-- div.edit-panel#report_edit -->
 <div class="modal fade" id="add-observation">
@@ -69,11 +66,11 @@
         		<h4 class="modal-title">New Observation</h4>
 			</div><!-- div.modal-header -->
 			<div class="modal-body">
-				<input type="text" placeholder="search observation">
+				<input type="text" placeholder="search observation" ng-model="observation">
 			</div><!-- div.modal-body -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button class="btn btn-success" type="button">Add</button>
+				<button class="btn btn-success" type="button" ng-click="new_obs_add()">Add</button>
 			</div>
 		</div>
 	</div>
