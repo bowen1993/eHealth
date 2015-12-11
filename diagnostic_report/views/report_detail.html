@@ -1,17 +1,17 @@
 <div class="detail-info" id="order-info">
-	<span class="label report-{{report_data.status}} label-right">{{report_data.status}}</span>
+	<span class="label report-{{reports.status}} label-right">{{reports.status}}</span>
 	<div class="info-item"><span class="item-name">ID: </span><span>db1</span></div>
-	<div class="info-item"><span class="item-name">Category: </span><span>{{report_data.category.coding[0].display}}</span></div>
-	<div class="info-item"><span class="item-name">Code: </span><span ng-repeat="code in report_data.code.coding">{{code.display}}  </span></div>
-	<div class="info-item"><span class="item-name">Subject: </span><span>{{report_data.subject.display}}</span></div>
-	<div class="info-item"><span class="item-name">Performer: </span><span>{{report_data.performer.display}}</span></div>
-	<div class="info-item"><span class="item-name">Encounter: </span><span>{{report_data.encounter}}</span></div>
-	<div class="info-item"><span class="item-name">Effective: </span><span>{{report_data.effectiveDateTime}}</span></div>
-	<div class="info-item"><span class="item-name">Issued: </span><span>{{report_data.issued}}</span></div>
-	<div class="info-item" ng-repeat="specimen in report_data.specimen"><span class="item-name">Specimen: </span><span>{{specimen.display}}</span></div>
+	<div class="info-item"><span class="item-name">Category: </span><span>{{reports.category.coding[0].display}}</span></div>
+	<div class="info-item"><span class="item-name">Code: </span><span ng-repeat="code in reports.code.coding">{{code.display}}  </span></div>
+	<div class="info-item"><span class="item-name">Subject: </span><span>{{reports.subject.display}}</span></div>
+	<div class="info-item"><span class="item-name">Performer: </span><span>{{reports.performer.display}}</span></div>
+	<div class="info-item"><span class="item-name">Encounter: </span><span>{{reports.encounter}}</span></div>
+	<div class="info-item"><span class="item-name">Effective: </span><span>{{reports.effectiveDateTime}}</span></div>
+	<div class="info-item"><span class="item-name">Issued: </span><span>{{reports.issued}}</span></div>
+	<div class="info-item" ng-repeat="specimen in reports.specimen"><span class="item-name">Specimen: </span><span>{{specimen.display}}</span></div>
 	<div class="info-item">
 		<div class="item-title">Result</div>
-		<div class="sub-item" ng-repeat="observation in report_data.result">
+		<div class="sub-item" ng-repeat="observation in reports.result">
 			<span class="item-name">Observation</span>
 			<div ng-click="show_obs_detail()">{{observation.display}}</div>
 		</div>

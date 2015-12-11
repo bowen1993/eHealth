@@ -43,6 +43,7 @@ var create = function(access_token ,data_type, data, res){
 	console.log('create');
 	console.log(access_token);
 	var url = configs.api_url + '/' + data_type;
+	console.log(url);
 	doPost(url, data, access_token, res);
 }
 

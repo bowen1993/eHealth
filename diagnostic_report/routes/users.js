@@ -9,8 +9,10 @@ var test_data = require('../controllers/test_data.js');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	console.log('calling');
-	console.log(req.session.access_token);
+	console.log(req.session.clinical_access_token);
 	clinical_api.create('DiagnosticReport', test_data.report, req.session.clinical_access_token, res);
+	//console.log(req.session.access_token);
+	//genomic_api_call.create(req.session.access_token, 'DiagnosticReport', test_data.report, res);
 });
 
 module.exports = router;

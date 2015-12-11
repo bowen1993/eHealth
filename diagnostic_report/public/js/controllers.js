@@ -22,12 +22,11 @@ function set_order_data(data){
 }
 
 function set_report_data(data){
-	var reports = JSON.parse(data).entry;
+	var reports = data.entry;
 	$('.item').remove();
 	$('.report-item').remove();
 	var mid_element = angular.element(document.getElementById("mid-panel"));
 	var mid_scope = mid_element.scope();
-	console.log(reports[0].resource);
 	mid_scope.set_report(reports);
 }
 
@@ -72,7 +71,8 @@ DRController.controller('left_panel', ['$scope', '$http', '$location', function(
 	}
 	$scope.get_report = function(){
 		$location.path('#/');
-		$http.get('/orders').success( function(data) {
+		$http.get('/datas/all_report').success( function(data) {
+			console.log(data);
 			set_report_data(data);
 		});
 	}
@@ -171,6 +171,15 @@ function form_report_json(info){
 	}
 	return res_json;
 }
+
+DRController.controller('ReportCtrl', ['$scope','$http', '$route', function($scope, $http, $route){
+	$scope.id = $route.current.params.id;
+	console.log($scope.id);
+	$http.get('/datas/report?id=' + $scope.id).success(function(data){
+		console.log(data);
+		$scope.reports = data;
+	});
+}]);
 
 DRController.controller('OrderCtrl', ['$scope','$http', '$route', function($scope, $http, $route){
 	$scope.id = $route.current.params.id;
