@@ -1,9 +1,11 @@
+/* author: Bowen */
 html, body{
     font-family:"Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     height:100%;
     width:100%;
+    background: linear-gradient(#6699CC, #66FF99);
 }
 
 a{
@@ -13,13 +15,13 @@ a{
 div#container-fluid{
 	width:100%;
 	height: 100%;
-  background: linear-gradient(#6699CC, #66FF99);
+
 }
 
 div#header{
 	margin:10px 1.5%;
 	padding: 2% 2%;
-	background-color: #08609f;
+	background-color: #1d75cf;
 	border-radius: 10px;
 	height:17%;
 	min-height: 100px;
@@ -47,7 +49,7 @@ div#left-panel{
 	float:left;
 	height:100%;
 	width:20%;
-	background-color: rgba(8, 158, 45, 1);
+	background-color: #66FF99;
 	padding: 2% 1.5%;
 	border-radius: 10px;
 }
@@ -59,18 +61,18 @@ div#left-panel div.item-list{
 	border-left-width: 0;
 	border-right-width: 0;
 	margin-bottom: 20%;
-	border-color: #eeeeee;
+	border-color: #757877;
 }
 
 div#left-panel div.item-list div.title h3{
 	font-size: 1.5em;
-	color:#dfc201;
+	color:#e29c00;
 }
 
 div#left-panel div.item-list div.lists li{
 	list-style: none;
 	font-size: 1.2em;
-	color:#f4f4f4;
+	color:#111;
 }
 
 div#mid-panel{
@@ -171,6 +173,7 @@ span.label-right{
 }
 
 div.report-item{
+  opacity: 0.8;
 	height: 100px;
 	background-color:#FFFFFF;
 	width: 80%;
@@ -230,7 +233,7 @@ div.info-item{
 	padding-left: 19px;
 	padding-bottom: 3%;
 	margin-bottom: 2%;
-	background-color: #CCCCCC;
+	background-color: rgba(227, 227, 227, 0.7);
 	border-radius: 10px;
 	font-size: 1.2em;
 }
@@ -309,4 +312,12 @@ div#add-observation{
 
 div.input-item textarea{
 	background-color: #FFF;
+}
+
+
+div.footer-right{
+  font-size: 1.2em;
+  color:#7d7d7d;
+  margin-right: 10px;
+  margin-bottom: 0px;
 }

@@ -1,3 +1,4 @@
+/* author: Bowen */
 var express = require('express');
 var router = express.Router();
 var auth = require('../controllers/auth.js');

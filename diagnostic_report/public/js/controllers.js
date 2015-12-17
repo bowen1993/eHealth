@@ -1,3 +1,4 @@
+/* author: Bowen */
 var DRController = angular.module('DRController', []);
 
 var category_dict = {

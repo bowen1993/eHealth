@@ -1,3 +1,4 @@
+/* author: Bowen */
 var diagnostic_report_app = angular.module('diagnostic_report', ['ngRoute', 'DRController']);
 
 diagnostic_report_app.config(['$routeProvider', function($routeProvider){

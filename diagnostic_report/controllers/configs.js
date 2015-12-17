@@ -1,3 +1,4 @@
+/* author: Bowen */
 var api_url = 'http://genomics-advisor.smartplatforms.org:8005/api';
 var client_id = '7e0151ab-bb9f-4787-a1a7-7dfa9f41e9e6';
 var auth_url = 'http://genomics-advisor.smartplatforms.org:8005/auth';

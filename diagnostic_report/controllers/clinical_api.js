@@ -1,3 +1,4 @@
+/* author: Bowen */
 var queryBuilder = require('./query.js');
 var requestify = require('requestify');
 var configs = require('./configs.js');
