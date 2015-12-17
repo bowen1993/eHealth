@@ -1,6 +1,70 @@
 /* author: Bowen */
 var DRController = angular.module('DRController', []);
 
+var report = {
+  resourceType: 'DiagnosticReport',
+  id: 'dg1',
+  text: {
+    status: 'generated',
+    div: "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: dg1</p><p><b>contained</b>: , , , , </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory test <span>(Details : {SNOMED CT code '15220000' = 'Laboratory test (procedure)', given as 'Laboratory test'}; {http://hl7.org/fhir/v2/0074 code 'LAB' = 'Laboratory)</span></p><p><b>code</b>: ABCB4 gene mutation analysis <span>(Details : {LOINC code '49874-1' = 'ABCB4 gene mutation analysis in Blood or Tissue by Molecular genetics method Narrative', given as 'ABCB4 gene mutation analysis'})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>effective</b>: 2014-3-4 8:30:00</p><p><b>issued</b>: 2014-5-16 10:28:00</p><p><b>performer</b>: <a>Molecular Diagnostic Laboratory</a></p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p><p><b>result</b>: </p><ul><li>Genetic analysis master panel for ABCB4 -variant1. Generated Summary: id: od-1; Extensions: todo, Extensions: todo, Extensions: todo, Extensions: todo; status: final; ABCB4 gene mutation analysis <span>(Details : {LOINC code '49874-1' = 'ABCB4 gene mutation analysis in Blood or Tissue by Molecular genetics method Narrative', given as 'ABCB4 gene mutation analysis'})</span>; positive <span>(Details : {http://hl7.org/fhir/v2/0078 code 'POS' = 'Positive)</span></li><li>Genetic analysis master panel for ABCB4 -variant2. Generated Summary: id: od-2; Extensions: todo, Extensions: todo, Extensions: todo, Extensions: todo; status: final; ABCB4 gene mutation analysis <span>(Details : {LOINC code '49874-1' = 'ABCB4 gene mutation analysis in Blood or Tissue by Molecular genetics method Narrative', given as 'ABCB4 gene mutation analysis'})</span>; positive <span>(Details : {http://hl7.org/fhir/v2/0078 code 'POS' = 'Positive)</span></li><li>Genetic analysis master panel for ABCB4 -variant3. Generated Summary: id: od-3; Extensions: todo, Extensions: todo, Extensions: todo, Extensions: todo; status: final; ABCB4 gene mutation analysis <span>(Details : {LOINC code '49874-1' = 'ABCB4 gene mutation analysis in Blood or Tissue by Molecular genetics method Narrative', given as 'ABCB4 gene mutation analysis'})</span>; positive <span>(Details : {http://hl7.org/fhir/v2/0078 code 'POS' = 'Positive)</span></li><li>Genetic analysis master panel for ABCB4 -variant4. Generated Summary: id: od-4; Extensions: todo, Extensions: todo, Extensions: todo, Extensions: todo; status: final; ABCB4 gene mutation analysis <span>(Details : {LOINC code '49874-1' = 'ABCB4 gene mutation analysis in Blood or Tissue by Molecular genetics method Narrative', given as 'ABCB4 gene mutation analysis'})</span>; positive <span>(Details : {http://hl7.org/fhir/v2/0078 code 'POS' = 'Positive)</span></li></ul></div>"
+  },
+	contained:[],
+	extension:[],
+  status: 'final',
+  category: {
+    coding: [
+      {
+        system: 'http://hl7.org/fhir/v2/0074',
+        code: 15220000,
+        display: 'Laboratory test'
+      }
+    ]
+  },
+  code: {
+    coding: [
+      {
+        system: 'http://loinc.org',
+        code: '49874-1',
+        display: 'ABCB4 gene mutation analysis'
+      }
+    ]
+  },
+  subject: {
+    reference: 'Patient/genetics-example2',
+    display: ''
+  },
+  effectiveDateTime: '2014-03-04T08:30:00+11:00',
+  issued: '2014-05-16T10:28:00+01:00',
+  performer: {
+    reference: 'Practitioner/genetics-example2',
+    display: ''
+  },
+  specimen: [
+    {
+      reference: "Specimen/genetics-example2",
+      display: ''
+    }
+  ],
+  result: [
+    {
+      reference: '#od-1',
+      display: 'Genetic analysis master panel for ABCB4 -variant1'
+    },
+    {
+      reference: '#od-2',
+      display: 'Genetic analysis master panel for ABCB4 -variant2'
+    },
+    {
+      reference: '#od-3',
+      display: 'Genetic analysis master panel for ABCB4 -variant3'
+    },
+    {
+      reference: '#od-4',
+      display: 'Genetic analysis master panel for ABCB4 -variant4'
+    }
+  ]
+}
+
 var category_dict = {
 	'AU': 'Audiology',
 	'BG': 'Blood Gases',
@@ -48,6 +112,7 @@ var category_dict = {
 	'VUS': 'Vascular Ultrasound',
 	'XRC': 'Cineradiograph'
 }
+
 
 DRController.controller('MainListCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
 	$scope.orders = [];
@@ -199,55 +264,19 @@ function get_result(info){
 
 function form_report_json(info, order_id){
 	console.log(info);
-	var res_json = {
-		resourceType:'DiagnosticReport',
-		id: 'db1',
-		text:{
-			status:'generated',
-			div: form_div(info),
-		},
-		category:{
-			coding:[
-				{
-					system:'http://hl7.org/fhir/v2/0074',
-					code: info.category,
-					display:category_dict[info.category]
-				}
-			]
-		},
-		code:{
-			coding:[
-				{
-					system:'http://loinc.org',
-					code: info.code,
-					display:''
-				}
-			]
-		},
-		contained:get_observation(info),
-		extension:[],
-		status:info.status,
-		subject:{
-			reference:info.subject,
-			display:''
-		},
-		effectiveDateTime:info.effective,
-		issued:info.issued,
-		performer:{
-			reference:info.performer,
-			display:''
-		},
-		request:{
-			reference:'DiagnosticOrder/'+order_id,
-			display:order_id
-		},
-		specimen:[{
-			reference:info.specimen,
-			display:''
-		}],
-		result: get_result(info)
-	}
-	return res_json;
+	report.category.coding[0].code = info.category;
+	report.category.coding[0].display = category_dict[info.category];
+	report.code.coding[0].code = info.code;
+	report.subject.reference = info.subject;
+	report.subject.display = '';
+	report.performer.reference = info.performer;
+	report.performer.display = '';
+	report.effectiveDateTime = info.effective;
+	report.issued = info.issued;
+	report.specimen.reference = info.specimen;
+	report.conclusion = info.conclusion;
+	report.result = get_result(info);
+	return report;
 }
 
 DRController.controller('OrderCtrl', ['$scope','$http', '$route', function($scope, $http, $route){
