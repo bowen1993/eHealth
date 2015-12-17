@@ -26,7 +26,8 @@ var doPost = function(url, data, access_token, res){
     json:data
   };
   request(opt, function(error, response, body){
-    if (!error && response.statusCode < 400){
+    console.log(body);
+    if (!error && response.statusCode < 505){
       res.send(body);
     }
     else{
@@ -48,6 +49,28 @@ var doPost = function(url, data, access_token, res){
 }
 
 var doPut = function(url, data, access_token, res){
+  console.log('updating');
+  var opt = {
+    method: 'PUT',
+    url:url,
+    headers: {
+      'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' + access_token,
+    },
+    json:data
+  };
+  request(opt, function(error, response, body){
+    console.log(body);
+    if (!error && response.statusCode < 505){
+      res.send(body);
+    }
+    else{
+      res.send(body);
+      console.log('error');
+      console.log(error);
+    }
+  });
+  /*
   requestify.put(url, data,{
     headers:{
       'Accept' : 'application/json',
@@ -56,6 +79,7 @@ var doPut = function(url, data, access_token, res){
   }).then(function(response){
     res.send(response.getBody());
   });
+  */
 }
 
 var search = function(type, querys, access_token, res){
@@ -76,6 +100,7 @@ var getAll = function(type, access_token, res){
 }
 
 var create = function(type, data, access_token, res){
+  console.log('cin');
   var type = data.resourceType;
   var url = configs.clinical_api_uri + '/' + type + '?_format=json';
   console.log(url);
@@ -89,7 +114,9 @@ var read = function(type, id, access_token, res){
 }
 
 var update = function(type, id, data, access_token, res){
+  console.log('updateing');
   var url = configs.clinical_api_uri + '/' + type + '/' + id;
+  console.log(url);
   return doPut(url, data, access_token, res)
 }
 

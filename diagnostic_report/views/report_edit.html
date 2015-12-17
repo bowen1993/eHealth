@@ -17,7 +17,7 @@
 	</div>
 	<div class="input-item row">
 		<label for="performer" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Performer: </label>
-		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="performer" ng-model="peformer" placeholder="Performer">
+		<input class="col-xs-6 col-sm-6 col-md-6 col-lg-6" type="text" id="performer" ng-model="performer" placeholder="Performer">
 	</div>
 	<div class="input-item row">
 		<label for="effective" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Effective: </label>
@@ -44,17 +44,16 @@
 		<label for="cstatus" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Status</label>
 		<select ng-modal="new_status" name="status" id="cstatus">
 			<option value="Partial">Partial</option>
-			<option value="Partial">Final</option>
-			<option value="Partial">Corrected</option>
-			<option value="Partial">Appended</option>
-			<option value="Partial">Cancelled</option>
+			<option value="Final">Final</option>
+			<option value="Corrected">Corrected</option>
+			<option value="Appended">Appended</option>
+			<option value="Cancelled">Cancelled</option>
 		</select>
 	</div>
 	<div class="alert alert-success hint-msg hide"></div>
 	<div class="btn-area">
 		<button class="btn btn-info" ng-click="go_index()">Back</button>
-		<button class="btn btn-success pull-right" ng-click="show_msg('Report Confirmed')">Confirm</button>
-		<button class="btn btn-primary pull-right" ng-click="submit(1)">Save</button>
+		<button class="btn btn-primary pull-right" ng-click="submit()">Save</button>
 	</div><!-- div.btn-area -->
 </div><!-- div.edit-panel#report_edit -->
 <div class="modal fade" id="add-observation">

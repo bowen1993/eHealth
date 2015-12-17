@@ -1,10 +1,10 @@
 
 <div class="report-item" ng-repeat="report in reports">
-	<div class="report-head-bar"><a href="#/report/{{report.resource.id}}">Check</a><a href="#/edit_report/:1">Edit</a></div>
+	<div class="report-head-bar"><a href="#/report/{{report.resource.id}}">Check</a><a href="#/edit_report/0/{{report.resource.id}}/1">Edit</a></div>
 	<div class="item-info">
 		<div class="row">
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
-				{{report.resource.code.display}}
+				{{report.resource.id}}
 			</div>
 			<div class="col-sm-3 col-xs-3 col-mg-3 col-lg-3">
 				{{report.resource.performer.display}}

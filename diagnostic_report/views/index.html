@@ -2,7 +2,7 @@
 <html ng-app="diagnostic_report">
 <head>
 	<meta charset="UTF-8">
-	<title>Diagnostic Order</title>
+	<title>Diagnostic Reporter</title>
 	<script type="text/javascript" src="/static/js/angular.min.js"></script>
 	<script type="text/javascript" src="/static/js/angular-route.min.js"></script>
 	<script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
@@ -19,11 +19,11 @@
 		<div id="header">
 			<div class="user-sec">
 				<div class="user-pic">
-					<img src="/static/img/test.png" alt="pic", class="img-circle">
+					<img src="/static/img/smart.png" alt="pic", class="img-rounded">
 				</div><!-- div.user-pic -->
 				<div class="user-info row">
-					<div class="col-md-3 col-lg-3 user-name">
-						<h3>Test</h3>
+					<div class="col-md-4 col-lg-4 user-name pull-right">
+						<h1>Diagonstic Reporter</h1>
 					</div><!-- div.user-name -->
 				</div><!-- div.user-info -->
 			</div><!-- div.user-sec -->
@@ -46,7 +46,6 @@
 			<div class="item-list" id="report">
 				<div class="title">
 					<h3 ng-click="toggle_report()">Report</h3>
-					<a class="btn btn-primary pull-right" href="#/edit_report/:1">Add</a>
 				</div>
 				<div class="lists" ng-hide="report_flag">
 					<ul>

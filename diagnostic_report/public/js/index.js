@@ -10,7 +10,7 @@ diagnostic_report_app.config(['$routeProvider', function($routeProvider){
 	}).when('/report/:report_id', {
 		templateUrl: '/fhir-app/tmp/report_detail.html',
 		controller: 'ReportCtrl'
-	}).when('/edit_report/:report_id', {
+	}).when('/edit_report/:id/:report_id/:type', {
 		templateUrl:'/fhir-app/tmp/report_edit.html',
 		controller: 'EditReportCtrl'
 	}).otherwise({
